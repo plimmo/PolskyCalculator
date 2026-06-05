@@ -226,7 +226,9 @@ public class Main {
     private static String tokensToString(List<Token> tokens) {
         StringBuilder sb = new StringBuilder();
         for (Token t : tokens) {
-            if (!sb.isEmpty()) sb.append(" ");
+            if (!sb.isEmpty()) {
+                sb.append(" ");
+            }
             sb.append(t.getValue());
         }
         return sb.toString();
