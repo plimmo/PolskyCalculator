@@ -11,12 +11,12 @@ public class UnaryMinusOperation implements Operator {
 
     @Override
     public int getPrecedence() {
-        return 3; // выше * и /
+        return 3;
     }
 
     @Override
     public boolean isLeftAssociative() {
-        return false; // правоассоциативен
+        return false;
     }
 
     @Override

@@ -2,11 +2,9 @@ package im.plimmo.calculator;
 
 import im.plimmo.exception.CalculatorException;
 import im.plimmo.operator.Operator;
-import im.plimmo.parser.ExpressionParser;
 import im.plimmo.parser.IdentityParser;
 import im.plimmo.token.Token;
 import im.plimmo.tokenizer.PostfixTokenizer;
-import im.plimmo.tokenizer.Tokenizer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,8 +62,7 @@ public class Calculator {
                     op.execute(stack);
                 } else {
                     if (stack.size() < arity) {
-                        throw new CalculatorException(
-                                "Not enough operands for operator '" + symbol + "': need " + arity + ", got " + stack.size());
+                        throw new CalculatorException("Not enough operands for operator '" + symbol + "': need " + arity + ", got " + stack.size());
                     }
                     op.execute(stack);
                 }
@@ -76,22 +73,10 @@ public class Calculator {
         }
 
         if (stack.size() != 1) {
-            throw new CalculatorException(
-                    "Invalid expression: stack has " + stack.size() + " elements after evaluation");
+            throw new CalculatorException("Invalid expression: stack has " + stack.size() + " elements after evaluation");
         }
 
         return stack.pop();
     }
 
-    public Map<String, Operator> getRegistry() {
-        return new HashMap<>(registry);
-    }
-
-    public Tokenizer getTokenizer() {
-        return config.getTokenizer();
-    }
-
-    public ExpressionParser getParser() {
-        return config.getParser();
-    }
 }

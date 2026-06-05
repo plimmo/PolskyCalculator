@@ -71,7 +71,6 @@ public class InfixTokenizer implements Tokenizer {
                 continue;
             }
 
-            // символьный оператор (+, -, *, /, %, и т.д.)
             StringBuilder sb = new StringBuilder();
             while (i < len && isSymbolOperatorChar(expression.charAt(i))) {
                 sb.append(expression.charAt(i));

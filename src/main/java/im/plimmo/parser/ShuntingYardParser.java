@@ -35,13 +35,16 @@ public class ShuntingYardParser implements ExpressionParser {
                 } else {
                     while (!operatorStack.isEmpty()) {
                         Token top = operatorStack.peek();
-                        if (top.isOpenParen()) break;
+                        if (top.isOpenParen()) {
+                            break;
+                        }
 
                         Operator topOp = registry.get(top.getValue());
-                        if (topOp == null) break;
+                        if (topOp == null) {
+                            break;
+                        }
 
-                        boolean shouldPop = topOp.getPrecedence() > op.getPrecedence()
-                                || (topOp.getPrecedence() == op.getPrecedence() && op.isLeftAssociative());
+                        boolean shouldPop = topOp.getPrecedence() > op.getPrecedence() || (topOp.getPrecedence() == op.getPrecedence() && op.isLeftAssociative());
 
                         if (shouldPop) {
                             output.add(operatorStack.pop());

@@ -60,7 +60,7 @@ public class Main {
         calc.register("*", new MultiplicationOperation());
         calc.register("/", new DivisionOperation());
         calc.register("%", new ModOperation());
-        calc.register("m", new UnaryMinusOperation());  // унарный минус
+        calc.register("m", new UnaryMinusOperation());
         calc.register("sum", new SumOperation());
 
         double r1 = calc.calculate("6 8 + 3 %");
@@ -83,10 +83,7 @@ public class Main {
     }
 
     private static void infixDemo() {
-        CalculatorConfig infixConfig = new CalculatorConfig(
-                new InfixTokenizer(),
-                new ShuntingYardParser()
-        );
+        CalculatorConfig infixConfig = new CalculatorConfig(new InfixTokenizer(), new ShuntingYardParser());
         Calculator calc = new Calculator(infixConfig);
 
         calc.register("+", new AdditionOperation());
@@ -101,7 +98,7 @@ public class Main {
         List<Token> polish1 = calc.toPolishNotation(tokens1);
         double result1 = calc.evaluate(polish1);
         System.out.println("Выражение: " + eq1);
-        System.out.println("RPN:       " + tokensToString(polish1));
+        System.out.println("RPN: " + tokensToString(polish1));
         printTest("sum(1,2,3,4)/5 + 9%2", 3.0, result1);
 
         String eq2 = "(3 + 4) * 2";
@@ -216,8 +213,7 @@ public class Main {
 
     private static void printTest(String label, double expected, double actual) {
         String status = Math.abs(expected - actual) < 1e-9 ? "✓" : "✗";
-        System.out.printf("  [%s] %s => ожидалось: %s, получили: %s%n",
-                status, label, formatNum(expected), formatNum(actual));
+        System.out.printf("  [%s] %s => ожидалось: %s, получили: %s%n", status, label, formatNum(expected), formatNum(actual));
     }
 
     private static String formatNum(double v) {
