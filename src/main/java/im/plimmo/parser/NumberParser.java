@@ -63,7 +63,9 @@ public class NumberParser {
     }
 
     public static boolean isNumber(String s) {
-        if (s == null || s.isEmpty()) return false;
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
         try {
             parse(s);
             return true;
